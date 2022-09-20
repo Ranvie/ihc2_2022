@@ -196,11 +196,11 @@ footer a:hover{
 }
 
 .collapsed{
-    display: block;
+    display: block !important;
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 .item_type_title{
@@ -293,6 +293,17 @@ footer a:hover{
     margin: 20px 0;
 }
 
+.drop_button_items{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.drop_button_items li{
+    width: 100%;
+    display: block;
+}
+
 @media (min-width: 992px)
 {
     .drop_button_container{
@@ -302,5 +313,13 @@ footer a:hover{
     .menu_text_container{
         display: block;
         margin-top: 30px;
+    }
+}
+
+@media (min-width: 1336px)
+{
+    .drop_button_items li{
+        width: 50%;
+        display: inline;
     }
 }

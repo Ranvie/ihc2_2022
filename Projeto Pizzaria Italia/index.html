@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/estilo.css">
         <title>Itália Pizzaria São Carlos</title>
+        <script src="js/ToggleMenu.js"></script>
     </head>
     <body>
         <header id="header">
@@ -26,26 +27,32 @@
                 <section class="col-6 drop_button_container">
                     <div class="row">
                         <div class="col align_right">
-                            <img src="img/dropButton.png" class="drop_button" onclick="">
+                            <img src="img/dropButton.png" class="drop_button" onclick="ToggleMenu('menu_drop_down', 'col justify-content-center menu_text_container')">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col"></div>
                     </div>
                 </section>
-                <section class="col justify-content-center menu_text_container">
+                <section id="menu_drop_down" class="col justify-content-center menu_text_container hidden">
                     <div class="row">
-                        <div class="col-sm-12 col-lg-4">
-                            <a href="#"><img src="img/bag.png">Nossas Pizzas</a>
+                        <div class="col-sm-12 col-lg-6">
+                            <ul class="drop_button_items">
+                                <li>
+                                    <a href="#"><img src="img/bag.png">Nossas Pizzas</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="img/location.png">Localização</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-sm-12 col-lg-4">
-                            <a href="#"><img src="img/location.png">Localização</a>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 telephone_icon_container">
-                            <a href="#">
-                                <img src="img/telephone.png">
-                                <p>(16) 3375-1635</p>
-                            </a>               
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="telephone_icon_container">
+                                <a href="#">
+                                    <img src="img/telephone.png">
+                                    <p>(16) 3375-1635</p>
+                                </a>
+                            </div>        
                         </div>
                     </div>
                 </section>
