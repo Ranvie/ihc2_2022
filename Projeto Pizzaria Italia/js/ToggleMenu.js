@@ -1,9 +1,73 @@
-function ToggleMenu(id, classes)
+var lgBreakpoint = 992;
+
+window.onload = function onLoadEnableMenuOnLargeViewPorts()
+{
+    if(window.innerWidth >= lgBreakpoint)
+    {
+        toggleMenu('menu_drop_down', true);
+    }
+}
+
+addEventListener('resize', (event) => {
+    if(window.innerWidth > lgBreakpoint)
+    {
+        toggleMenu('menu_drop_down', true)
+    }
+    else
+    {
+        toggleMenu('menu_drop_down', false)
+    }
+});
+
+function toggleMenu(id, isEnabled)
 {
     var menu = document.getElementById(id);
-    var menuClasses = BreakWordsToArray(menu.className);
+    var menuClasses = breakWordsToArray(menu.className);
+    var formatedClasses;
 
-    if(ArrayContains(menuClasses, "collapsed"))
+    removeFromArray(menuClasses, "collapsed");
+    removeFromArray(menuClasses, "hidden");
+
+    formatedClasses = arrayToString(menuClasses);
+
+    if(isEnabled)
+    {
+        menu.setAttribute("class", formatedClasses + " collapsed");
+    }
+    else
+    {
+        menu.setAttribute("class", formatedClasses + " hidden");
+    }
+}
+
+function removeFromArray(array, removeThis)
+{
+    var indexLocation = arrayContains(array, removeThis);
+
+    if(indexLocation != -1)
+    {
+        array[indexLocation] = "";
+    }
+}
+
+function arrayToString(array)
+{
+    var classes="";
+
+    for(var i=0; i < array.length; i++)
+    {
+        classes += array[i] + " ";
+    }
+
+    return classes;
+}
+
+function onDropMenuButtonClick(id, classes)
+{
+    var menu = document.getElementById(id);
+    var menuClasses = breakWordsToArray(menu.className);
+
+    if(arrayContains(menuClasses, "collapsed") != -1)
     {
         menu.setAttribute("class", classes + " hidden");
     }
@@ -11,10 +75,9 @@ function ToggleMenu(id, classes)
     {
         menu.setAttribute("class", classes + " collapsed");
     }
-
 }
 
-function BreakWordsToArray(text)
+function breakWordsToArray(text)
 {
     var word = "";
     var wordsArray = new Array();
@@ -41,15 +104,15 @@ function BreakWordsToArray(text)
     return wordsArray;
 }
 
-function ArrayContains(array, searchFor)
+function arrayContains(array, searchFor)
 {
-    var contain = false;
+    var contain = -1;
 
-    for(var i=0; i < array.length && !contain; i++)
+    for(var i=0; i < array.length && contain == -1; i++)
     {
         if(array[i] == searchFor)
         {
-            contain = true;
+            contain = i;
         }
     }
 

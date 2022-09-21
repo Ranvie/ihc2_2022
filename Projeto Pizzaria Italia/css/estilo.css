@@ -44,6 +44,7 @@ footer a:hover{
 
 #header{
     width: 100%;
+    min-width: 438px;
     position: fixed;
     top: 0;
     background-color: #169347;
